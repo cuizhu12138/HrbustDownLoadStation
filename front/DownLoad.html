@@ -1,0 +1,90 @@
+<!--
+ * @Author:       SJX
+ * @E-Mail:       540643428@qq.com
+ * @TODO:         Become Better
+ * @: ------------------------------------------------------
+ * @Date: 2023-04-28 12:45:48
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>哈尔滨理工大学下载站</title>
+
+    <style>
+        ul {
+            list-style-type: none;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 5px;
+            margin-bottom: 5px;
+            background-color: #f0f0f0;
+        }
+
+        li:hover {
+            background-color: #ccc;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>
+        下载资源列表
+    </h1>
+
+    <ul id="fileList"></ul>
+
+    <script>
+        var fileList = document.getElementById('fileList');
+
+        // 发起AJAX请求获取文件列表
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:11451/normal/list/', true); // 这里的URL需要替换为你的后端接口地址
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+
+                // 将文件列表添加到交互式列表中
+                for (var i = 0; i < response.files.length; i++) {
+                    var listItem = document.createElement('li');
+                    listItem.textContent = response.files[i];
+                    fileList.appendChild(listItem);
+                }
+            }
+        };
+        xhr.send();
+
+
+        function SendGetFileRequest(filename) {
+            //var downloadUrl = 'http://localhost:11451/normal/download/' + encodeURIComponent(filename);
+            var downloadUrl = 'http://localhost:11451/normal/download/' + encodeURIComponent(filename) + '?_cache=' + Date.now();
+            window.open(downloadUrl, '_blank');
+        }
+
+
+
+
+        // 获取列表元素
+        var list = document.getElementById('fileList');
+
+        // 添加点击事件处理程序
+        list.addEventListener('click', function (event) {
+            var target = event.target;
+
+            // 检查点击的元素是否为列表项
+            if (target.tagName === 'LI') {
+                // console.log(target.innerHTML);
+                SendGetFileRequest(target.innerHTML)
+                // 在这里可以执行其他操作，根据需要进行修改
+            }
+        });
+
+    </script>
+</body>
+
+</html>

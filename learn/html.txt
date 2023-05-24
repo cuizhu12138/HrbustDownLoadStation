@@ -1,0 +1,70 @@
+<!--
+ * @Author:       SJX
+ * @E-Mail:       540643428@qq.com
+ * @TODO:         Become Better
+ * @: ------------------------------------------------------
+ * @Date: 2023-04-28 12:53:04
+-->
+
+1
+<head> 元素包含了文档的元（meta）数据，如 <meta charset="utf-8"> 
+定义网页编码格式为 utf-8
+
+2
+xhtml强制小写，更推荐使用小写，尽量关闭元素
+
+3
+<br> 换行
+<hr> 定义水平线
+<! 注释内容 > 注释
+<b> 加粗文本
+<i> 斜体文本
+<code> 计算机代码
+<sub> 下标
+<sup> 上标
+<small> 小号字
+<strong> 加重语气
+<em> 着重文字
+<th> 粗体居中       
+<img>	定义图像
+<map>	定义图像地图
+<area>	定义图像地图中的可点击区域
+/*
+<map name="planetmap">
+  <area shape="rect" coords="0,0,82,126" alt="Sun" href="sun.htm">
+  <area shape="circle" coords="90,58,3" alt="Mercury" href="mercur.htm">
+  <area shape="circle" coords="124,58,8" alt="Venus" href="venus.htm">
+</map>
+该段代码中的shape指的是点击区域的形状，coords指的应该是链接区域在图片中的坐标（像素为单位）
+*/
+无序列表使用 <ul> 标签
+/*
+<ul>
+<li>Coffee</li>
+<li>Milk</li>
+</ul>
+*/
+有序列表用<ol>
+/*
+<ol>
+<li>Coffee</li>
+<li>Milk</li>
+</ol>
+*/
+
+4
+请始终将正斜杠添加到子文件夹。假如这样书写链接：href="https://www.runoob.com/html"，就会向服务器产生两次 HTTP 请求。
+这是因为服务器会添加正斜杠到这个地址，然后创建一个新的请求，就像这样：href="https://www.runoob.com/html/"。
+
+5
+网页30s 自动刷新
+<meta http-equiv="refresh" content="30">
+
+6
+
+
+
+
+
+跨域下载问题使用正确的http协议即可
+防止后端关闭还能下载，就在地址后面加个随机数
